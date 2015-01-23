@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title> Jogging Path Generator </title>
+        <script src="src/ol.js"></script>
+        <script>
+            function init() {
+                //map = new ol.Map("openstreetmap");
+                map = new ol.Map( {
+                    target: "openstreetmap",
+                    layers: [
+                        new ol.layer.Tile({source: new ol.source.OSM()})
+                    ]
+                });
+                mapView = new ol.View({
+                    center: [0, 0],
+                    zoom: 2
+                });
+                map.setView(mapView);
+
+                // Lets create the controls
+                rotCont = new ol.control.Rotate();
+                zoomCont = new ol.control.Zoom({duration: 125});
+                scaleLineCont = new ol.control.ScaleLine();
+                
+                // Lets add the controls
+                map.addControl(rotCont);
+                map.addControl(zoomCont);
+                map.addControl(scaleLineCont);
+            }
+        </script>
+        <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    </head>
+
+    <body onload="init();" >
+        <div id="openstreetmap" style="height:600px; width:800px"></div>
+    </body>
+</html>
+
+
+
